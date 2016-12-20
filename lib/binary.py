@@ -2,7 +2,6 @@ import os
 
 import numpy as np
 from sklearn.datasets import load_svmlight_file
-from sklearn.datasets.svmlight_format import _gen_open, _open_and_load
 
 from lib.dataset_analysis import features_characteristics, print_characteristics
 
