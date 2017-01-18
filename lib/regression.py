@@ -7,7 +7,7 @@ from lib.dataset_analysis import features_characteristics, print_characteristics
 
 # name, path, n_observations, n_features
 regression_datasets = [
-    ('Abalone Train', '../regression/abalone/abalone.trn', 4177, 8),
+    ('Abalone Train', '../regression/abalone/abalone.trn.bz2', 4177, 8),
 ]
 
 def iterate_regression_dataset_path():
