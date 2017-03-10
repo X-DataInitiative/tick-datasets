@@ -1,14 +1,12 @@
 import os
 from collections import OrderedDict
-
 import numpy as np
 
 from lib.dataset_analysis import print_characteristics
-import glob
 
-# name, path, number of realization
+# name, path, number of realization, number of nodes, end_time
 hawkes_datasets = [
-    ('Bund', '../hawkes/bund/bund_*.npz', 20)
+    ('Bund', '../hawkes/bund/bund.npz', 20, 4, 50400)
 ]
 
 
@@ -19,13 +17,10 @@ def iterate_hawkes_dataset_path():
 
 
 def iterate_hawkes_dataset():
-    for name, path, n_realizations in hawkes_datasets:
+    for name, path, n_realizations, n_nodes, end_time in hawkes_datasets:
         path = os.path.join(os.path.dirname(__file__), path)
-        timestamps_list = []
-        for filepath in glob.glob(path):
-            timestamps = np.load(filepath)
-            timestamps_list += [timestamps['arr_0']]
-        yield name, timestamps_list, n_realizations
+        timestamps_dict = np.load(path)
+        yield name, timestamps_dict, n_realizations, n_nodes, end_time
 
 
 def hawkes_characteristics(timestamps_list):
@@ -47,7 +42,9 @@ def hawkes_characteristics(timestamps_list):
 
 
 def describe_hawkes_datasets():
-    for name, timestamps_list, *args in iterate_hawkes_dataset():
+    for name, timestamps_dict, *args in iterate_hawkes_dataset():
+        timestamps_list = [timestamps_dict[key]
+                           for key in timestamps_dict.keys()]
         characteristics = hawkes_characteristics(timestamps_list)
         print('\n{:}'.format(name))
         print_characteristics(characteristics, html=False)
