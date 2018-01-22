@@ -92,6 +92,9 @@ ENV/
 *.trn
 *.tst
 
+# origin files before cleaning
+*_orig.bz2
+
 # IDE files
 .DS_Store
 .idea/*
