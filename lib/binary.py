@@ -14,6 +14,10 @@ binary_datasets = [
     ('ijcnn1 Test', '../binary/ijcnn1/ijcnn1.tst.bz2', 91701, 22),
     ('Reuters Train', '../binary/reuters/reuters.trn.bz2', 7770, 8315),
     ('Reuters Test', '../binary/reuters/reuters.tst.bz2', 3299, 8315),
+    ('KDD 2010 Train', '../binary/kdd2010/kdd2010.trn.bz2',
+     19264097, 1129522),
+    ('KDD 2010 Test', '../binary/kdd2010/kdd2010.tst.bz2',
+     748401, 1163024),
 ]
 
 
